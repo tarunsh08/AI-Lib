@@ -1,24 +1,17 @@
 'use client'
 
-import { useState, useEffect } from "react";
+import HeroSection from "@/components/landing/hero";
 import ChatProviders from "../../components/ChatProviders";
 
 export default function Home() {
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsLoading(false);
-    }, 3000);
-
-    return () => clearTimeout(timer);
-  }, []);
 
   return (
     <>
-      <section>
-        
-      </section>
+      <main className="bg-white dark:bg-black/5 overflow-x-hidden">
+        <div className="grid grid-rows-[auto_1fr_auto] min-h-screen px-6 lg:px-4 gap-4 sm:gap-12">
+          <HeroSection />
+        </div>
+      </main>
       <ChatProviders />
     </>
   );
