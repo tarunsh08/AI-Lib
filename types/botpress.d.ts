@@ -21,8 +21,8 @@ export interface BotpressConfig {
   botName?: string;
   avatarUrl?: string;
   stylesheet?: string;
-  containerWidth?: string; // Added missing property
-  layoutWidth?: string;    // Added missing property
+  containerWidth?: string; 
+  layoutWidth?: string;    
   container?: {
     position?: 'bottom-right' | 'bottom-left' | 'full';
     width?: string;

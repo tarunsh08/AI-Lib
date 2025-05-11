@@ -3,81 +3,70 @@
 import { useEffect } from 'react'
 import type { BotpressConfig, BotpressEvent } from '../types/botpress'
 
-const BOTPRESS_CONFIGS: Array<{
-  scriptUrl: string;
-  initConfig: BotpressConfig;
-}> = [
-  {
-    scriptUrl: 'https://cdn.botpress.cloud/webchat/v2.4/inject.js',
-    initConfig: {
-      botId: 'your-main-bot-id',
-      hostUrl: 'https://your-botpress-instance.com',
-      botName: 'Main Assistant',
-      avatarUrl: '/bot-avatar.png',
-      stylesheet: 'https://your-cdn.com/custom-styles.css'
-    }
-  },
-  {
-    scriptUrl: 'https://files.bpcontent.cloud/2025/05/07/21/20250507214844-ZGIK9VLL.js',
-    initConfig: {
-      botId: 'your-secondary-bot-id',
-      hostUrl: 'https://your-other-botpress-instance.com',
-      botName: 'Specialist Bot',
-      containerWidth: '350px',
-      layoutWidth: '350px'
-    }
+const BOTPRESS_CONFIG = {
+  scriptUrls: [
+    'https://cdn.botpress.cloud/webchat/v2.5/inject.js',
+    'https://files.bpcontent.cloud/2025/05/07/21/20250507214844-ZGIK9VLL.js'
+  ],
+  initConfig: {
+    botId: 'your-bot-id', 
+    hostUrl: 'https://cdn.botpress.cloud/webchat/v2.5',
+    botName: 'My Assistant',
+    avatarUrl: '/bot-avatar.png', 
+    containerWidth: '400px',
+    layoutWidth: '400px',
+    showBotInfoPage: true,
+    enableTranscriptDownload: true,
   }
-]
+}
 
 export default function ChatProviders() {
   useEffect(() => {
-    const loadBot = async (scriptUrl: string, config: BotpressConfig) => {
-      return new Promise<void>((resolve) => {
+    const loadScript = (url: string) => {
+      return new Promise<void>((resolve, reject) => {
+        const existingScript = document.querySelector(`script[src="${url}"]`)
+        if (existingScript) {
+          existingScript.remove()
+        }
+
         const script = document.createElement('script')
-        script.src = scriptUrl
+        script.src = url
         script.async = true
-        script.onload = () => {
-          if (window.botpressWebChat && window.botpressWebChat.init) {
-            window.botpressWebChat.init(config)
-
-            // Optional: Handle bot events
-            if (window.botpressWebChat.onEvent) {
-              window.botpressWebChat.onEvent((event: BotpressEvent) => {
-                console.log('Botpress event:', event)
-                // Handle specific events here
-              })
-            }
-          } else {
-            console.error('Botpress WebChat not available after loading script')
-          }
-
-          resolve()
-        }
-        script.onerror = () => {
-          console.error(`Failed to load bot script: ${scriptUrl}`)
-          resolve() 
-        }
+        script.onload = () => resolve()
+        script.onerror = () => reject(new Error(`Failed to load script: ${url}`))
         document.body.appendChild(script)
       })
     }
 
-    const loadAllBots = async () => {
+    const initializeBotpress = async () => {
       try {
-        // Load bots sequentially to avoid conflicts
-        for (const { scriptUrl, initConfig } of BOTPRESS_CONFIGS) {
-          await loadBot(scriptUrl, initConfig)
+        for (const url of BOTPRESS_CONFIG.scriptUrls) {
+          await loadScript(url)
+        }
+
+        document.querySelectorAll('.bp-web-chat').forEach(el => el.remove())
+
+        if (window.botpressWebChat?.init) {
+          window.botpressWebChat.init(BOTPRESS_CONFIG.initConfig)
+          
+          window.botpressWebChat.onEvent?.((event: BotpressEvent) => {
+            console.log('Botpress event:', event)
+          })
+        } else {
+          console.error('Botpress WebChat not available after loading scripts')
         }
       } catch (error) {
-        console.error('Error loading bots:', error)
+        console.error('Error initializing Botpress:', error)
       }
     }
 
-    loadAllBots()
+    initializeBotpress()
 
     return () => {
-      // Cleanup all bot containers if they exist
-      document.querySelectorAll('.bp-web-chat').forEach(el => {
-        el.remove()
+      document.querySelectorAll('.bp-web-chat').forEach(el => el.remove())
+      BOTPRESS_CONFIG.scriptUrls.forEach(url => {
+        const script = document.querySelector(`script[src="${url}"]`)
+        if (script) script.remove()
       })
     }
   }, [])
