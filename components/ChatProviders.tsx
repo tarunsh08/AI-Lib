@@ -17,6 +17,11 @@ const BOTPRESS_CONFIG = {
     layoutWidth: '400px',
     showBotInfoPage: true,
     enableTranscriptDownload: true,
+    stylesheet: `
+      .bp-web-chat {
+        z-index: 9999 !important;
+      }
+    `
   }
 }
 
@@ -52,6 +57,15 @@ export default function ChatProviders() {
           window.botpressWebChat.onEvent?.((event: BotpressEvent) => {
             console.log('Botpress event:', event)
           })
+
+          // Additional style adjustments
+          const style = document.createElement('style')
+          style.innerHTML = `
+            .bp-web-chat {
+              z-index: 9999 !important;
+            }
+          `
+          document.head.appendChild(style)
         } else {
           console.error('Botpress WebChat not available after loading scripts')
         }
