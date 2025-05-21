@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ViewTransitions } from 'next-view-transitions'
 import { ThemeProvider } from "@/components/providers/theme-providers";
+import { RootProvider } from 'fumadocs-ui/provider';
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -36,7 +37,7 @@ export default function RootLayout({
                     enableSystem
                     disableTransitionOnChange
                   >
-                    {children}
+                    <RootProvider>{children}</RootProvider>
                     </ThemeProvider>
       </body>
     </html>
