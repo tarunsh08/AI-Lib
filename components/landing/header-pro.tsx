@@ -24,13 +24,13 @@ export function HeaderPro() {
     if (random < 0.75) {
       setContent({
         text: "Built app fast",
-        productName: "CodeSnippet Boilerplate",
+        productName: "Eatech Boilerplate",
         link: "#",
       });
     } else {
       setContent({
         text: "Explore new components",
-        productName: "CodeSnippet UI Pro",
+        productName: "Eatech UI Pro",
         link: "#",
       });
     }
@@ -45,7 +45,7 @@ export function HeaderPro() {
           className="flex items-center justify-end gap-2 pl-2 pr-0.5 py-1 text-sm font-medium text-zinc-800 dark:text-zinc-200 rounded-xl border-2 border-fuchsia-500/20 hover:border-fuchsia-500/60 transition-all duration-300 group hover:shadow-md"
         >
           <span className="hidden md:flex items-center gap-2">
-            {content.productName === "CodeSnippet UI Pro" ? (
+            {content.productName === "Eatech UI Pro" ? (
               <ConfettiOutline className="w-4 h-4 text-fuchsia-500" />
             ) : (
               <Rocket className="w-4 h-4 text-fuchsia-500" />
@@ -56,7 +56,7 @@ export function HeaderPro() {
           </span>
 
           <span className="flex md:hidden items-center gap-2">
-            {content.productName === "CodeSnippet UI Pro" ? (
+            {content.productName === "Eatech UI Pro" ? (
               <PartyPopper className="w-4 h-4 text-fuchsia-500" />
             ) : (
               <Rocket className="w-4 h-4 text-fuchsia-500" />
