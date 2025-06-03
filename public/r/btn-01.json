@@ -1,0 +1,18 @@
+{
+  "name": "btn-01",
+  "type": "registry:component",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "button"
+  ],
+  "files": [
+    {
+      "type": "registry:component",
+      "content": "import { Button } from \"@/components/ui/button\";\r\nimport { cn } from \"@/lib/utils\";\r\nimport { ArrowRight } from \"lucide-react\";\r\n\r\ninterface Btn01Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {\r\n    children?: React.ReactNode;\r\n}\r\n\r\nexport default function Btn01({\r\n    className,\r\n    children = \"Continue\",\r\n    ...props\r\n}: Btn01Props) {\r\n    return (\r\n        <Button\r\n            className={cn(\r\n                \"relative h-11 px-6\",\r\n                \"bg-zinc-900 dark:bg-zinc-50\",\r\n                \"text-zinc-50 dark:text-zinc-900\",\r\n                \"hover:bg-zinc-800 dark:hover:bg-zinc-100\",\r\n                \"rounded-xl\",\r\n                \"transition-all duration-300\",\r\n                \"overflow-hidden\",\r\n                \"group\",\r\n                className\r\n            )}\r\n            {...props}\r\n        >\r\n            <div\r\n                className={cn(\r\n                    \"flex items-center gap-2\",\r\n                    \"transition-all duration-300\"\r\n                )}\r\n            >\r\n                <span>{children}</span>\r\n                <ArrowRight\r\n                    className={cn(\r\n                        \"w-4 h-4\",\r\n                        \"transition-transform duration-300\",\r\n                        \"group-hover:translate-x-1\"\r\n                    )}\r\n                />\r\n            </div>\r\n        </Button>\r\n    );\r\n}",
+      "path": "/components/eatechUI/button/btn-01.tsx",
+      "target": "/components/eatechUI/btn-01.tsx"
+    }
+  ]
+}

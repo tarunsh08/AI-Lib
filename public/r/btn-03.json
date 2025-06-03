@@ -1,0 +1,19 @@
+{
+  "name": "btn-03",
+  "type": "registry:component",
+  "dependencies": [
+    "lucide-react",
+    "motion"
+  ],
+  "registryDependencies": [
+    "button"
+  ],
+  "files": [
+    {
+      "type": "registry:component",
+      "content": "import { Button } from \"@/components/ui/button\";\r\nimport { cn } from \"@/lib/utils\";\r\nimport { ArrowRight } from \"lucide-react\";\r\n\r\ninterface Btn01Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {\r\n    children?: React.ReactNode;\r\n}\r\n\r\n\r\nexport function Pressable3DButton({\r\n    className,\r\n    children = \"Continue\",\r\n    ...props\r\n}: Btn01Props) {\r\n    return (\r\n        <Button\r\n            className={cn(\r\n                \"relative h-11 px-6\",\r\n                \"bg-zinc-900 dark:bg-zinc-50\",\r\n                \"text-zinc-50 dark:text-zinc-900\",\r\n                \"rounded-xl\",\r\n                \"transition-all duration-150\",\r\n                \"overflow-hidden\",\r\n                \"group\",\r\n                \"shadow-[0_5px_0_rgba(0,0,0,0.2)] dark:shadow-[0_5px_0_rgba(255,255,255,0.1)]\",\r\n                \"hover:translate-y-[2px] hover:shadow-[0_3px_0_rgba(0,0,0,0.2)] dark:hover:shadow-[0_3px_0_rgba(255,255,255,0.1)]\",\r\n                \"active:translate-y-[5px] active:shadow-none\",\r\n                className\r\n            )}\r\n            {...props}\r\n        >\r\n            <div className=\"flex items-center gap-2\">\r\n                <span>{children}</span>\r\n                <ArrowRight\r\n                    className={cn(\r\n                        \"w-4 h-4\",\r\n                        \"transition-transform duration-300\",\r\n                        \"group-hover:translate-x-1\"\r\n                    )}\r\n                />\r\n            </div>\r\n        </Button>\r\n    );\r\n}",
+      "path": "/components/eatechUI/button/btn-03.tsx",
+      "target": "/components/eatechUI/btn-03.tsx"
+    }
+  ]
+}

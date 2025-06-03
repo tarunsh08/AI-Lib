@@ -41,14 +41,13 @@ const getComponentFiles = async (files: File[], registryType: string) => {
             const normalizedPath = file.startsWith("/") ? file : `/${file}`;
             const filePath = path.join(REGISTRY_BASE_PATH, normalizedPath);
             const fileContent = await fs.readFile(filePath, "utf-8");
-            
             const fileName = normalizedPath.split('/').pop() || '';
             
             return {
                 type: registryType,
                 content: fileContent,
                 path: normalizedPath,
-                target: `/components/codesnippetui/${fileName}`,
+                target: `/components/eatechUI/${fileName}`,
             };
         }
         const normalizedPath = file.path.startsWith("/")
@@ -68,7 +67,7 @@ const getComponentFiles = async (files: File[], registryType: string) => {
                 case "registry:block":
                     return `/blocks/${fileName}`;
                 default:
-                    return `/components/codesnippetui/${fileName}`;
+                    return `/components/eatechUI/${fileName}`;
             }
         };
         

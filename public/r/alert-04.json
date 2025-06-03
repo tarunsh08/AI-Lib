@@ -1,0 +1,17 @@
+{
+  "name": "alert-04",
+  "type": "registry:component",
+  "dependencies": [
+    "lucide-react",
+    "motion"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "type": "registry:component",
+      "content": "import { Info } from \"lucide-react\";\r\n\r\nexport function InfoAlert() {\r\n    return (\r\n        <div className=\"w-full max-w-xl mx-auto\">\r\n            <div className=\"relative bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800/50 rounded-xl p-4\">\r\n                <div className=\"flex gap-3\">\r\n                    <div className=\"p-1.5 rounded-full bg-blue-100 dark:bg-blue-900/40\">\r\n                        <Info className=\"h-5 w-5 text-blue-600 dark:text-blue-400\" />\r\n                    </div>\r\n                    <div className=\"space-y-0.5\">\r\n                        <h3 className=\"text-sm font-medium text-blue-800 dark:text-blue-200\">\r\n                            Information\r\n                        </h3>\r\n                        <p className=\"text-[13px] text-blue-700 dark:text-blue-300\">\r\n                            Here's some important information for you.\r\n                        </p>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n        </div>\r\n    );\r\n}",
+      "path": "/components/eatechUI/alert/alert-04.tsx",
+      "target": "/components/eatechUI/alert-04.tsx"
+    }
+  ]
+}

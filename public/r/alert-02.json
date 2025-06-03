@@ -1,0 +1,18 @@
+{
+  "name": "alert-02",
+  "type": "registry:component",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "alert"
+  ],
+  "files": [
+    {
+      "type": "registry:component",
+      "content": "import { AlertTriangle } from \"lucide-react\";\r\n\r\nexport function ErrorAlert() {\r\n    return (\r\n        <div className=\"w-full max-w-xl mx-auto\">\r\n            <div className=\"relative bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800/50 rounded-xl p-4\">\r\n                <div className=\"flex gap-3\">\r\n                    <div className=\"p-1.5 rounded-full bg-red-100 dark:bg-red-900/40\">\r\n                        <AlertTriangle className=\"h-5 w-5 text-red-600 dark:text-red-400\" />\r\n                    </div>\r\n                    <div className=\"space-y-0.5\">\r\n                        <h3 className=\"text-sm font-medium text-red-800 dark:text-red-200\">\r\n                            Error\r\n                        </h3>\r\n                        <p className=\"text-[13px] text-red-700 dark:text-red-300\">\r\n                            Something went wrong. Please try again.\r\n                        </p>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n        </div>\r\n    );\r\n}",
+      "path": "/components/eatechUI/alert/alert-02.tsx",
+      "target": "/components/eatechUI/alert-02.tsx"
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "name": "btn-04",
+  "type": "registry:component",
+  "dependencies": [
+    "lucide-react",
+    "motion"
+  ],
+  "registryDependencies": [
+    "button"
+  ],
+  "files": [
+    {
+      "type": "registry:component",
+      "content": "import { Button } from \"@/components/ui/button\";\r\nimport { cn } from \"@/lib/utils\";\r\nimport { ArrowRight } from \"lucide-react\";\r\n\r\ninterface Btn01Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {\r\n    children?: React.ReactNode;\r\n}\r\n\r\n\r\nexport function GradientShineButton({\r\n    className,\r\n    children = \"Continue\",\r\n    ...props\r\n}: Btn01Props) {\r\n    return (\r\n        <Button\r\n            className={cn(\r\n                \"relative h-11 px-6\",\r\n                \"bg-gradient-to-r from-blue-600 to-cyan-500\",\r\n                \"text-white\",\r\n                \"rounded-xl\",\r\n                \"transition-all duration-300\",\r\n                \"overflow-hidden\",\r\n                \"group\",\r\n                \"hover:shadow-lg hover:shadow-blue-500/30\",\r\n                \"after:absolute after:inset-0 after:bg-[linear-gradient(45deg,transparent_25%,rgba(255,255,255,0.3)_50%,transparent_75%)]\",\r\n                \"after:opacity-0 hover:after:opacity-100\",\r\n                \"after:transition-opacity after:duration-500\",\r\n                \"after:bg-[length:400%_400%] hover:after:animate-shine\",\r\n                className\r\n            )}\r\n            {...props}\r\n        >\r\n            <div className=\"relative z-10 flex items-center gap-2\">\r\n                <span>{children}</span>\r\n                <ArrowRight\r\n                    className={cn(\r\n                        \"w-4 h-4\",\r\n                        \"transition-transform duration-300\",\r\n                        \"group-hover:translate-x-1\"\r\n                    )}\r\n                />\r\n            </div>\r\n        </Button>\r\n    );\r\n}",
+      "path": "/components/eatechUI/button/btn-04.tsx",
+      "target": "/components/eatechUI/btn-04.tsx"
+    }
+  ]
+}

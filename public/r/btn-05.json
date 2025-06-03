@@ -1,0 +1,19 @@
+{
+  "name": "btn-05",
+  "type": "registry:component",
+  "dependencies": [
+    "lucide-react",
+    "motion"
+  ],
+  "registryDependencies": [
+    "button"
+  ],
+  "files": [
+    {
+      "type": "registry:component",
+      "content": "import { Button } from \"@/components/ui/button\";\r\nimport { cn } from \"@/lib/utils\";\r\nimport { ArrowRight } from \"lucide-react\";\r\n\r\ninterface Btn01Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {\r\n    children?: React.ReactNode;\r\n}\r\n\r\n\r\nexport function CyberpunkButton({\r\n    className,\r\n    children = \"Continue\",\r\n    ...props\r\n}: Btn01Props) {\r\n    return (\r\n        <Button\r\n            className={cn(\r\n                \"relative h-11 px-6\",\r\n                \"bg-zinc-900 dark:bg-zinc-50\",\r\n                \"text-rose-500 dark:text-cyan-400\",\r\n                \"rounded-none\",\r\n                \"transition-all duration-300\",\r\n                \"overflow-hidden\",\r\n                \"group\",\r\n                \"border-2 border-rose-500 dark:border-cyan-400\",\r\n                \"hover:bg-zinc-800/80 dark:hover:bg-zinc-100/80\",\r\n                \"shadow-[0_0_10px_-2px] shadow-rose-500/50 dark:shadow-cyan-400/50\",\r\n                \"hover:shadow-[0_0_15px_-2px] hover:shadow-rose-500/70 dark:hover:shadow-cyan-400/70\",\r\n                \"before:absolute before:bottom-0 before:left-0 before:w-full before:h-[2px]\",\r\n                \"before:bg-gradient-to-r before:from-transparent before:via-rose-500 dark:before:via-cyan-400 before:to-transparent\",\r\n                \"before:opacity-0 group-hover:before:opacity-100\",\r\n                \"before:transition-opacity before:duration-500\",\r\n                className\r\n            )}\r\n            {...props}\r\n        >\r\n            <div className=\"flex items-center gap-2 font-mono tracking-wider\">\r\n                <span>{children}</span>\r\n                <ArrowRight\r\n                    className={cn(\r\n                        \"w-4 h-4\",\r\n                        \"transition-transform duration-300\",\r\n                        \"group-hover:translate-x-1\"\r\n                    )}\r\n                />\r\n            </div>\r\n        </Button>\r\n    );\r\n}",
+      "path": "/components/eatechUI/button/btn-05.tsx",
+      "target": "/components/eatechUI/btn-05.tsx"
+    }
+  ]
+}

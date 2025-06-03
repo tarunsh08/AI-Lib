@@ -1,0 +1,17 @@
+{
+  "name": "alert-03",
+  "type": "registry:component",
+  "dependencies": [
+    "lucide-react",
+    "motion"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "type": "registry:component",
+      "content": "import { Button } from \"@/components/ui/button\";\r\nimport { AlertOctagon } from \"lucide-react\";\r\n\r\nexport function ActionAlert() {\r\n    return (\r\n        <div className=\"w-full max-w-xl mx-auto\">\r\n            <div className=\"relative bg-rose-50 dark:bg-rose-900/20 border border-rose-200 dark:border-rose-800/50 rounded-xl p-4\">\r\n                <div className=\"flex gap-3\">\r\n                    <div className=\"p-1.5 rounded-full bg-rose-100 dark:bg-rose-900/40\">\r\n                        <AlertOctagon className=\"h-5 w-5 text-rose-600 dark:text-rose-400\" />\r\n                    </div>\r\n                    <div className=\"flex-1 space-y-2\">\r\n                        <div className=\"space-y-0.5\">\r\n                            <h3 className=\"text-sm font-medium text-rose-800 dark:text-rose-200\">\r\n                                Critical Issue\r\n                            </h3>\r\n                            <p className=\"text-[13px] text-rose-700 dark:text-rose-300\">\r\n                                Your storage is almost full (95% used).\r\n                            </p>\r\n                        </div>\r\n                        <div className=\"flex gap-2\">\r\n                            <Button variant=\"outline\" size=\"sm\" className=\"border-rose-300 dark:border-rose-700 text-rose-700 dark:text-rose-300\">\r\n                                Learn More\r\n                            </Button>\r\n                            <Button size=\"sm\" className=\"bg-rose-600 hover:bg-rose-700 text-white\">\r\n                                Upgrade Now\r\n                            </Button>\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n        </div>\r\n    );\r\n}",
+      "path": "/components/eatechUI/alert/alert-03.tsx",
+      "target": "/components/eatechUI/alert-03.tsx"
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "name": "ai-input-01",
+  "type": "registry:component",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "textarea"
+  ],
+  "files": [
+    {
+      "type": "registry:component",
+      "content": "\"use client\";\r\n\r\nimport { Mic, Send } from \"lucide-react\";\r\nimport { useState } from \"react\";\r\nimport { cn } from \"@/lib/utils\";\r\nimport { Textarea } from \"@/components/ui/textarea\";\r\nimport { useAutoResizeTextarea } from \"@/hooks/use-auto-resize-textarea\";\r\n\r\nexport default function AIInput_01() {\r\n  const { textareaRef, adjustHeight } = useAutoResizeTextarea({\r\n    minHeight: 52,\r\n    maxHeight: 200,\r\n  });\r\n  const [inputValue, setInputValue] = useState(\"\");\r\n\r\n  const handleReset = () => {\r\n    setInputValue(\"\");\r\n    adjustHeight(true);\r\n  };\r\n\r\n  return (\r\n    <div className=\"w-full py-4\">\r\n      <div className=\"relative max-w-xl w-full mx-auto\">\r\n        <Textarea\r\n          id=\"ai-input-01\"\r\n          placeholder=\"Type your message...\"\r\n          className={cn(\r\n            \"max-w-xl bg-black/5 dark:bg-white/5 rounded-3xl pl-6 pr-16\",\r\n            \"placeholder:text-black/50 dark:placeholder:text-white/50\",\r\n            \"border-none ring-black/20 dark:ring-white/20\",\r\n            \"text-black dark:text-white text-wrap\",\r\n            \"overflow-y-auto resize-none\",\r\n            \"focus-visible:ring-0 focus-visible:ring-offset-0\",\r\n            \"transition-[height] duration-100 ease-out\",\r\n            \"leading-[1.2] py-[16px]\",\r\n            \"min-h-[52px]\",\r\n            \"max-h-[200px]\"\r\n          )}\r\n          ref={textareaRef}\r\n          value={inputValue}\r\n          onChange={(e) => {\r\n            setInputValue(e.target.value);\r\n            adjustHeight();\r\n          }}\r\n          onKeyDown={(e) => {\r\n            if (e.key === \"Enter\" && !e.shiftKey) {\r\n              e.preventDefault();\r\n              handleReset();\r\n            }\r\n          }}\r\n        />\r\n\r\n        <div\r\n          className={cn(\r\n            \"absolute top-1/2 -translate-y-1/2 rounded-xl bg-black/5 dark:bg-white/5 py-1 px-1 transition-all duration-200\",\r\n            inputValue ? \"right-10\" : \"right-3\"\r\n          )}\r\n        >\r\n          <Mic className=\"w-4 h-4 text-black/70 dark:text-white/70\" />\r\n        </div>\r\n        <button\r\n          onClick={handleReset}\r\n          type=\"button\"\r\n          className={cn(\r\n            \"absolute top-1/2 -translate-y-1/2 rounded-xl bg-black/5 dark:bg-white/5 py-1 px-1 transition-all duration-700\",\r\n            inputValue\r\n              ? \"block right-3 animate-slide-in cursor-pointer\"\r\n              : \"hidden\"\r\n          )}\r\n        >\r\n          <Send className=\"w-4 h-4 text-black/70 dark:text-white/70 transition-opacity duration-700\" />\r\n        </button>\r\n      </div>\r\n    </div>\r\n  );\r\n}",
+      "path": "/components/eatechUI/ai-input/ai-input-01.tsx",
+      "target": "/components/eatechUI/ai-input-01.tsx"
+    },
+    {
+      "type": "registry:hook",
+      "content": "\r\nimport { useEffect, useRef, useCallback } from \"react\";\r\n\r\ninterface UseAutoResizeTextareaProps {\r\n    minHeight: number;\r\n    maxHeight?: number;\r\n}\r\n\r\nexport function useAutoResizeTextarea({\r\n    minHeight,\r\n    maxHeight,\r\n}: UseAutoResizeTextareaProps) {\r\n    const textareaRef = useRef<HTMLTextAreaElement>(null);\r\n\r\n    const adjustHeight = useCallback(\r\n        (reset?: boolean) => {\r\n            const textarea = textareaRef.current;\r\n            if (!textarea) return;\r\n\r\n            if (reset) {\r\n                textarea.style.height = `${minHeight}px`;\r\n                return;\r\n            }\r\n\r\n            textarea.style.height = `${minHeight}px`;\r\n\r\n            const newHeight = Math.max(\r\n                minHeight,\r\n                Math.min(\r\n                    textarea.scrollHeight,\r\n                    maxHeight ?? Number.POSITIVE_INFINITY\r\n                )\r\n            );\r\n\r\n            textarea.style.height = `${newHeight}px`;\r\n        },\r\n        [minHeight, maxHeight]\r\n    );\r\n\r\n    useEffect(() => {\r\n        const textarea = textareaRef.current;\r\n        if (textarea) {\r\n            textarea.style.height = `${minHeight}px`;\r\n        }\r\n    }, [minHeight]);\r\n\r\n    useEffect(() => {\r\n        const handleResize = () => adjustHeight();\r\n        window.addEventListener(\"resize\", handleResize);\r\n        return () => window.removeEventListener(\"resize\", handleResize);\r\n    }, [adjustHeight]);\r\n\r\n    return { textareaRef, adjustHeight };\r\n}",
+      "path": "/hooks/use-auto-resize-textarea.ts",
+      "target": "/hooks/use-auto-resize-textarea.ts"
+    }
+  ]
+}

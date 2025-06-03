@@ -1,0 +1,16 @@
+{
+  "name": "hand-written-title",
+  "type": "registry:component",
+  "dependencies": [
+    "motion"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "type": "registry:component",
+      "content": "\"use client\";\r\n\r\nimport { motion } from \"motion/react\";\r\ninterface HandWrittenTitleProps {\r\n    title?: string;\r\n    subtitle?: string;\r\n}\r\n\r\nexport default function HandWrittenTitle({\r\n    title = \"Hand Written\",\r\n    subtitle = \"Optional subtitle\",\r\n}: HandWrittenTitleProps) {\r\n    const draw = {\r\n        hidden: { pathLength: 0, opacity: 0 },\r\n        visible: {\r\n            pathLength: 1,\r\n            opacity: 1,\r\n            transition: {\r\n                pathLength: { duration: 2.5, ease: [0.43, 0.13, 0.23, 0.96] },\r\n                opacity: { duration: 0.5 },\r\n            },\r\n        },\r\n    };\r\n\r\n    return (\r\n        <div className=\"relative w-full max-w-4xl mx-auto py-24\">\r\n            <div className=\"absolute inset-0\">\r\n                <motion.svg\r\n                    width=\"100%\"\r\n                    height=\"100%\"\r\n                    viewBox=\"0 0 1200 600\"\r\n                    initial=\"hidden\"\r\n                    animate=\"visible\"\r\n                    className=\"w-full h-full\"\r\n                >\r\n                    <title>codesnippetui</title>\r\n                    <motion.path\r\n                        d=\"M 950 90 \r\n                           C 1250 300, 1050 480, 600 520\r\n                           C 250 520, 150 480, 150 300\r\n                           C 150 120, 350 80, 600 80\r\n                           C 850 80, 950 180, 950 180\"\r\n                        fill=\"none\"\r\n                        strokeWidth=\"12\"\r\n                        stroke=\"currentColor\"\r\n                        strokeLinecap=\"round\"\r\n                        strokeLinejoin=\"round\"\r\n                        variants={draw}\r\n                        className=\"text-black dark:text-white opacity-90\"\r\n                    />\r\n                </motion.svg>\r\n            </div>\r\n            <div className=\"relative text-center z-10 flex flex-col items-center justify-center\">\r\n                <motion.h1\r\n                    className=\"text-4xl md:text-6xl text-black dark:text-white tracking-tighter flex items-center gap-2\"\r\n                    initial={{ opacity: 0, y: 20 }}\r\n                    animate={{ opacity: 1, y: 0 }}\r\n                    transition={{ delay: 0.5, duration: 0.8 }}\r\n                >\r\n                    {title}\r\n                </motion.h1>\r\n                {subtitle && (\r\n                    <motion.p\r\n                        className=\"text-xl text-black/80 dark:text-white/80\"\r\n                        initial={{ opacity: 0 }}\r\n                        animate={{ opacity: 1 }}\r\n                        transition={{ delay: 1, duration: 0.8 }}\r\n                    >\r\n                        {subtitle}\r\n                    </motion.p>\r\n                )}\r\n            </div>\r\n        </div>\r\n    );\r\n}",
+      "path": "/components/eatechUI/hand-written-title.tsx",
+      "target": "/components/eatechUI/hand-written-title.tsx"
+    }
+  ]
+}

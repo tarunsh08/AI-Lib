@@ -1,0 +1,12 @@
+{
+  "name": "use-copy-to-clipboard",
+  "type": "registry:hook",
+  "files": [
+    {
+      "type": "registry:hook",
+      "content": "import * as React from \"react\";\r\n\r\nexport function useCopyToClipboard({\r\n    timeout = 2000,\r\n    onCopy,\r\n}: {\r\n    timeout?: number;\r\n    onCopy?: () => void;\r\n} = {}) {\r\n    const [isCopied, setIsCopied] = React.useState(false);\r\n\r\n    const copyToClipboard = (value: string) => {\r\n        if (typeof window === \"undefined\" || !navigator.clipboard.writeText) {\r\n            return;\r\n        }\r\n\r\n        if (!value) return;\r\n\r\n        navigator.clipboard.writeText(value).then(() => {\r\n            setIsCopied(true);\r\n\r\n            if (onCopy) {\r\n                onCopy();\r\n            }\r\n\r\n            setTimeout(() => {\r\n                setIsCopied(false);\r\n            }, timeout);\r\n        }, console.error);\r\n    };\r\n\r\n    return { isCopied, copyToClipboard };\r\n}",
+      "path": "/hooks/use-copy-to-clipboard.ts",
+      "target": "/hooks/use-copy-to-clipboard.ts"
+    }
+  ]
+}

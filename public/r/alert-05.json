@@ -1,0 +1,16 @@
+{
+  "name": "alert-05",
+  "type": "registry:component",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "type": "registry:component",
+      "content": "import { X, Bell } from \"lucide-react\";\r\n\r\nexport function ClosableAlert() {\r\n    return (\r\n        <div className=\"w-full max-w-xl mx-auto\">\r\n            <div className=\"relative bg-violet-50 dark:bg-violet-900/20 border border-violet-200 dark:border-violet-800/50 rounded-xl p-4\">\r\n                <div className=\"flex gap-3\">\r\n                    <div className=\"p-1.5 rounded-full bg-violet-100 dark:bg-violet-900/40\">\r\n                        <Bell className=\"h-5 w-5 text-violet-600 dark:text-violet-400\" />\r\n                    </div>\r\n                    <div className=\"flex-1 space-y-0.5\">\r\n                        <h3 className=\"text-sm font-medium text-violet-800 dark:text-violet-200\">\r\n                            Notification\r\n                        </h3>\r\n                        <p className=\"text-[13px] text-violet-700 dark:text-violet-300\">\r\n                            You have 3 new messages.\r\n                        </p>\r\n                    </div>\r\n                    <button className=\"p-1 rounded-full hover:bg-violet-200/50 dark:hover:bg-violet-800/30\">\r\n                        <X className=\"h-4 w-4 text-violet-600 dark:text-violet-400\" />\r\n                    </button>\r\n                </div>\r\n            </div>\r\n        </div>\r\n    );\r\n}",
+      "path": "/components/eatechUI/alert/alert-05.tsx",
+      "target": "/components/eatechUI/alert-05.tsx"
+    }
+  ]
+}
