@@ -1,3 +1,5 @@
+'use client'
+
 import { cn } from "@/lib/utils";
 import { Heart, MessageCircle, Share2, Bookmark, MoreHorizontal, Link as LinkIcon } from "lucide-react";
 import { useEffect, useRef } from "react";
