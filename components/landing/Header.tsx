@@ -12,7 +12,7 @@ const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   const navLinks = [
-    { href: "/docs/components/background-paths", label: "Components" },
+    { href: "/docs/components/avatar-picker", label: "Components" },
     { href: "/pricing", label: "Pricing" },
     { 
       href: "#", 

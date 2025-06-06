@@ -12,6 +12,7 @@ const BrowseComponentsButton = () => (
   <motion.button
     whileHover={{ scale: 1.02, y: -2 }}
     whileTap={{ scale: 0.98 }}
+    onClick={() => window.location.href = '/docs'}
     className="group relative px-8 py-4 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-semibold rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden"
   >
     <div className="absolute inset-0 bg-gradient-to-r from-purple-400/20 to-pink-400/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
@@ -26,6 +27,7 @@ const BrowseBlocksButton = () => (
   <motion.button
     whileHover={{ scale: 1.02, y: -2 }}
     whileTap={{ scale: 0.98 }}
+    onClick={()=> window.location.href = '/docs/blocks/ai-card-generation'}
     className="group px-8 py-4 bg-transparent border-2 border-purple-300 dark:border-purple-600 text-purple-600 dark:text-purple-300 font-semibold rounded-2xl hover:bg-purple-600 hover:text-white hover:border-purple-600 transition-all duration-300"
   >
     <span className="flex items-center gap-2">
